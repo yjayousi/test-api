@@ -1,6 +1,6 @@
 export class CreateTestRunResultDto {
+  artifact_id: string;
   test_run_id: string;
   question_id: string;
   question: string;
-  answer: string;
 }

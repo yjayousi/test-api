@@ -13,6 +13,9 @@ export type TestRunResultDocument = HydratedDocument<TestRunResult>;
 })
 export class TestRunResult extends BaseModel {
   @Prop()
+  artifact_id: string;
+
+  @Prop()
   test_run_id: string;
 
   @Prop()

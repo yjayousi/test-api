@@ -10,27 +10,27 @@ export class QuestionsService {
   constructor(
     @InjectModel(Question.name) private questionModel: Model<QuestionDocument>,
   ) {}
-	
-  create(createQuestionDto: CreateQuestionDto): Promise<Question> {
+
+  create(createQuestionDto: CreateQuestionDto) {
     const question = new this.questionModel(createQuestionDto);
     return question.save();
   }
 
-  findAll(): Promise<Question[]> {
+  findAll() {
     return this.questionModel.find().exec();
   }
 
-  findById(id: string): Promise<Question> {
+  findById(id: string) {
     return this.questionModel.findById(id).exec();
   }
 
-  update(id: string, updateQuestionDto: UpdateQuestionDto): Promise<Question> {
+  update(id: string, updateQuestionDto: UpdateQuestionDto) {
     return this.questionModel
       .findByIdAndUpdate(id, updateQuestionDto, { new: true })
       .exec();
   }
 
-  remove(id: string): Promise<Question> {
+  remove(id: string) {
     return this.questionModel.findByIdAndDelete(id).exec();
   }
 }

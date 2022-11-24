@@ -7,9 +7,10 @@ import {
   CONFIGURATION_KEYS,
   CONFIGURATION_SCHEMA,
 } from './ConfigurationSchema';
+import { OpenbookModule } from './openbook/openbook.module';
 import { QuestionsModule } from './questions/questions.module';
-import { TestRunsModule } from './test-runs/test-runs.module';
 import { TestRunResultsModule } from './test-run-results/test-run-results.module';
+import { TestRunsModule } from './test-runs/test-runs.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { TestRunResultsModule } from './test-run-results/test-run-results.module
     QuestionsModule,
     TestRunsModule,
     TestRunResultsModule,
+    OpenbookModule,
   ],
   controllers: [AppController],
   providers: [AppService],

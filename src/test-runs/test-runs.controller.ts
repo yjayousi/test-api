@@ -25,6 +25,11 @@ export class TestRunsController {
     return this.testRunsService.findAll();
   }
 
+  @Get('/last')
+  findLast() {
+    return this.testRunsService.findLast();
+  }
+
   @Get(':id')
   findById(@Param('id') id: string) {
     return this.testRunsService.findById(id);

@@ -20,9 +20,9 @@ export class TestRunResultsController {
     return this.testRunResultsService.create(createTestRunResultDto);
   }
 
-  @Get()
-  findAll() {
-    return this.testRunResultsService.findAll();
+  @Get(':test_run_id')
+  findByTestRun(@Param('test_run_id') test_run_id: string) {
+    return this.testRunResultsService.findByTestRun(test_run_id);
   }
 
   @Get(':id')
