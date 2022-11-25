@@ -17,9 +17,11 @@ export class TestRunsService {
   ) {}
 
   async create(createTestRunDto: CreateTestRunDto) {
+    // find last test_run
+    const previousTestRun = await this.findLast();
     let testRun = new this.testRunModel(createTestRunDto);
     testRun = await testRun.save();
-    this.runQueries(testRun);
+    this.runQueries(testRun, previousTestRun?._id);
     return testRun;
   }
 
@@ -45,10 +47,11 @@ export class TestRunsService {
     return this.testRunModel.findByIdAndDelete(id).exec();
   }
 
-  private async runQueries(testRun: TestRun) {
+  private async runQueries(testRun: TestRun, previous_test_run_id: string) {
     const questions = await this.questionsService.findAll();
 
     // Run queries in parallel
+    await this.update(testRun._id, { started_at: new Date() });
     const chunk_size = 5;
     while (questions.length > 0) {
       const chunk = questions.splice(0, chunk_size);
@@ -62,6 +65,7 @@ export class TestRunsService {
                   test_run_id: testRun._id,
                   question_id: q._id,
                   question: q.text,
+                  previous_test_run_id,
                 });
                 resolve(result);
               } catch (error) {
@@ -72,5 +76,9 @@ export class TestRunsService {
         ),
       );
     }
+
+    await this.update(testRun._id, {
+      finished_at: new Date(),
+    });
   }
 }

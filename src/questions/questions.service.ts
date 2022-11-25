@@ -16,7 +16,7 @@ export class QuestionsService {
     return question.save();
   }
 
-  findAll() {
+  async findAll() {
     return this.questionModel.find().exec();
   }
 

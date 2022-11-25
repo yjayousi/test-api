@@ -32,7 +32,7 @@ export class OpenBookClient {
     ).toString();
 
     try {
-      this.logger.log('endpoint', endpoint, 'headers', this.headers);
+      //this.logger.log('endpoint', endpoint, 'headers', this.headers);
       const response = await axios.post(
         endpoint,
         {
@@ -44,7 +44,7 @@ export class OpenBookClient {
           headers: this.headers,
         },
       );
-      this.logger.log('response.data', JSON.stringify(response.data));
+      // this.logger.log('response.data', JSON.stringify(response.data));
       return response.data?.result?.answer;
     } catch (error) {
       this.logger.error(error);

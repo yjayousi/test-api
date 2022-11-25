@@ -14,6 +14,12 @@ export type TestRunDocument = HydratedDocument<TestRun>;
 export class TestRun extends BaseModel {
   @Prop()
   artifact_id: string;
+
+  @Prop()
+  started_at: Date;
+
+  @Prop()
+  finished_at: Date;
 }
 
 export const TestRunSchema = SchemaFactory.createForClass(TestRun);

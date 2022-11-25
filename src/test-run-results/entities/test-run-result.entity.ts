@@ -29,6 +29,9 @@ export class TestRunResult extends BaseModel {
 
   @Prop()
   answer_score: number;
+
+  @Prop()
+  previous_test_run_id: string;
 }
 
 export const TestRunResultSchema = SchemaFactory.createForClass(TestRunResult);
