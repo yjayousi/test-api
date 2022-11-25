@@ -8,7 +8,7 @@ export enum CONFIGURATION_KEYS {
 
 export const CONFIGURATION_SCHEMA = Joi.object({
   [CONFIGURATION_KEYS.NODE_ENV]: Joi.string()
-    .valid('development')
+    .valid('development', 'production')
     .default('development'),
   [CONFIGURATION_KEYS.DATABASE_URL]: Joi.string().required(),
   [CONFIGURATION_KEYS.OPENBOOK_API_TOKEN]: Joi.string().required(),
