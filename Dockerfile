@@ -3,7 +3,7 @@ WORKDIR /app
 
 # Install app dependencies
 COPY package.json yarn.lock ./
-RUN yarn install && yarn build
+RUN yarn install
 
 # copy and build app
 COPY ./ ./
