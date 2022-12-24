@@ -28,7 +28,7 @@ jobs:
   redeploy:
     name: Redeploy webhook call
     runs-on: ubuntu-latest
-    needs: [docker]
+    needs: [push_to_registry]
     steps:
       - name: Deploy docker container webhook
         uses: joelwmale/webhook-action@master
